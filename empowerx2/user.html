@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerX Account Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .nav-bar {
+            background-color: #232f3e;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-item {
+            position: relative;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: white;
+            width: 250px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 10;
+        }
+        .dropdown a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        .dropdown a:hover {
+            background-color: #f3f3f3;
+        }
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <div>EmpowerX</div>
+    <div class="nav-item">
+        Hello, User ▼
+        <div class="dropdown">
+            <strong>Your Account</strong>
+            <a href="#">Profile Settings</a>
+            <a href="#">Service Provider Dashboard</a>
+            <a href="#">Your Bookings</a>
+            <a href="#">Membership & Subscriptions</a>
+            <hr>
+            <strong>Your Services</strong>
+            <a href="#">Manage Services</a>
+            <a href="#">Earnings & Reports</a>
+            <a href="#">Help & Support</a>
+            <hr>
+            <a href="#">Sign Out</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

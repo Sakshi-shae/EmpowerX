@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review System</title>
+    <style>
+        .review-form {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 300px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .star-rating {
+            direction: rtl;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 30px;
+            cursor: pointer;
+            color: gray;
+        }
+
+        .star-rating input:checked ~ label {
+            color: gold;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button to Toggle Review Form -->
+    <button id="reviewButton">Write a Review</button>
+
+    <!-- Review Form -->
+    <div class="review-form" id="reviewForm">
+        <h3>Rate Your Experience</h3>
+        <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+        </div>
+        <textarea id="reviewText" placeholder="Write your review here..." rows="4" cols="30"></textarea><br>
+        <button onclick="submitReview()">Submit Review</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Toggle review form visibility
+            document.getElementById("reviewButton").onclick = function () {
+                var reviewForm = document.getElementById("reviewForm");
+                reviewForm.style.display = (reviewForm.style.display === "none" || reviewForm.style.display === "") ? "block" : "none";
+            };
+        });
+
+        function submitReview() {
+            var rating = document.querySelector('input[name="rating"]:checked');
+            var reviewText = document.getElementById("reviewText").value.trim();
+
+            if (rating && reviewText) {
+                alert("Thank you for your review!\nRating: " + rating.value + "\nReview: " + reviewText);
+                // Optionally: Send review data to a server using fetch or AJAX
+                document.getElementById("reviewForm").style.display = "none"; // Hide form after submission
+            } else {
+                alert("Please provide both a rating and a review.");
+            }
+        }
+    </script>
+
+</body>
+</html>

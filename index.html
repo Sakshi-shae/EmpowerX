@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerX - Skilled Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo Section -->
+                <div class="logo">
+                    <img src="handshake.png" alt="EmpowerX Logo">
+                    <span>EMPOWERX</span>
+                </div>
+    
+                <!-- Navigation Links -->
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+    
+                <!-- Authentication Icons -->
+                <div class="auth-icons">
+                    <a href="login.html"><i class="fas fa-sign-in-alt"></i> LOGIN</a>
+                    <a href="signup.html"><i class="fas fa-user-plus"></i> REGISTER</a>
+                </div>
+    
+                <!-- User Account Dropdown -->
+    
+<div class="user-menu">
+    <div class="nav-item" onclick="toggleDropdown()">
+        <button class="dropdown-btn">Hello, ▼</button>
+        <div class="dropdown" id="userDropdown">
+            <strong>Your Account</strong>
+            <a href="#">Profile Settings</a>
+            <a href="services.html">Service Provider Dashboard</a>
+            <a href="#">Your Bookings</a>
+            <a href="#">Membership & Subscriptions</a>
+            <hr>
+            <strong>Your Services</strong>
+            <a href="#">Manage Services</a>
+            <a href="#">Earnings & Reports</a>
+            <a href="#">Help & Support</a>
+            <hr>
+            <a href="#">Sign Out</a>
+        </div>
+    </div>
+</div>
+
+    
+                <!-- Menu Toggle for Mobile -->
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+    
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <select id="language-select" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="hi">Hindi</option>
+                    </select>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    
+    <section id="services">
+        <div class="container">
+            <h2>Find Services Near You</h2>
+            <div class="location-container">
+                <button onclick="getUserLocation()">Use My Location</button>
+                <input type="text" id="manual-location" placeholder="Enter your city or zip code">
+                <button onclick="findNearbyServices()">Find Services</button>
+            </div>
+            <div id="map" style="width: 100%; height: 400px;">
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109782.71036631535!2d76.6149783494278!3d30.698443002558463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee906da6f81f%3A0x512998f16ce508d8!2z4Ki44Ki-4Ki54Ki_4Kis4Kmb4Ki-4Kim4Ki-IOCoheConOCpgOCopCDgqLjgqL_gqbDgqJgg4Kio4KiX4KiwLCDgqKrgqbDgqJzgqL7gqKw!5e0!3m2!1spa!2sin!4v1740821884958!5m2!1spa!2sin" style="width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+    </section>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h2>EmpowerX - Connecting Skills to Opportunities</h2>
+            <p>Skills Speak Greater Than Degrees</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            
+            <div class="search-container">
+                <input type="text" id="service-search" placeholder="Search services..." onkeyup="searchServices()">
+            </div>
+            
+            <div class="filter-container">
+                <button onclick="filterCategory('all')">All</button>
+                <button onclick="filterCategory('mechanic')">Mechanic</button>
+                <button onclick="filterCategory('electrician')">Electrician</button>
+                <button onclick="filterCategory('plumber')">Plumber</button>
+                <button onclick="filterCategory('carpenter')">Carpenter</button>
+            </div>
+            
+            <div class="service-list">
+                <div class="service-item mechanic">
+                    <h3>Diesel Mechanic</h3>
+                    <p>Specialized in vehicle engine repairs.</p>
+                    <button onclick="openProfile('services.html')">View Profile</button>
+                </div>
+
+                <div class="service-item electrician">
+                    <h3>Home Electrician</h3>
+                    <p>Handles wiring, installations, and repairs.</p>
+                    <button onclick="openProfile('services1.html')">View Profile</button>
+                </div>
+
+                <div class="service-item plumber">
+                    <h3>Plumbing Services</h3>
+                    <p>Fixes leaks, pipes, and installations.</p>
+                    <button onclick="openProfile('services2.html')">View Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2>Our Service Providers</h2>
+            <div class="gallery">
+    
+                <!-- Image 1 -->
+                <div class="gallery-item">
+                    <a href="#lightbox1">
+                        <img src="https://th.bing.com/th/id/OIP.rZmTOLbiNx5Et67MLc_YRAHaE8?w=237&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Provider 1">
+                    </a>
+                    <div class="gallery-caption">John Doe - Electrician</div>
+                </div>
+    
+                <!-- Lightbox 1 -->
+                <div id="lightbox1" class="lightbox">
+                    <a href="#" class="lightbox-close">&times;</a>
+                    <img src="https://th.bing.com/th/id/OIP.rZmTOLbiNx5Et67MLc_YRAHaE8?w=237&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Provider 1">
+                </div>
+    
+                <!-- Image 2 -->
+                <div class="gallery-item">
+                    <a href="#lightbox2">
+                        <img src="https://th.bing.com/th/id/OIP.SBXO9l2jydhSCtyIDcPtpAHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Provider 2">
+                    </a>
+                    <div class="gallery-caption">Aman Singh - Plumber</div>
+                </div>
+    
+                <!-- Lightbox 2 -->
+                <div id="lightbox2" class="lightbox">
+                    <a href="#" class="lightbox-close">&times;</a>
+                    <img src="https://th.bing.com/th/id/OIP.SBXO9l2jydhSCtyIDcPtpAHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Provider 2">
+                </div>
+    
+                <!-- Image 3 -->
+                <div class="gallery-item">
+                    <a href="#lightbox3">
+                        <img src="https://th.bing.com/th/id/OIP.PQ6uPvngeshAYIQ_d_0PZAHaE8?w=241&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Provider 3">
+                    </a>
+                    <div class="gallery-caption">Rakesh Sharma - Carpenter</div>
+                </div>
+    
+                <!-- Lightbox 3 -->
+                <div id="lightbox3" class="lightbox">
+                    <a href="#" class="lightbox-close">&times;</a>
+                    <img src="https://th.bing.com/th/id/OIP.PQ6uPvngeshAYIQ_d_0PZAHaE8?w=241&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Provider 3">
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- About Section -->
+<section id="about">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>EmpowerX is dedicated to bridging the gap between skilled professionals and those in need of their services. Our platform provides a seamless way for individuals to find reliable service providers while giving skilled workers a chance to showcase their talents.</p>
+
+        <h3>Our Vision</h3>
+        <p>At EmpowerX, we envision a world where talent and skill matter more than formal degrees. We strive to create a thriving community where professionals, regardless of their educational background, can connect with clients who truly value their expertise.</p>
+
+        <!-- Why Choose Us Section -->
+        <div class="why-choose-us">
+            <h3>Why Choose EmpowerX?</h3>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-user-check"></i>
+                    <h4>Verified Professionals</h4>
+                    <p>All service providers are carefully verified to ensure quality and trust.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Job Opportunities</h4>
+                    <p>Helping skilled individuals find work and grow their careers.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-star"></i>
+                    <h4>Customer Ratings</h4>
+                    <p>Users can review and rate service providers for transparency.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meet Our Team -->
+        <div class="team-section">
+            <h3>Meet Our Team</h3>
+            <div class="team">
+                <div class="team-member">
+                    <img src="dadman.jpg" alt="Founder">
+                    <h4>John Doe</h4>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="sakshi.jpg" alt="Founder">
+                    <h4>John Doe</h4>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="khushi.jpg" alt="Co-Founder">
+                    <h4>Jane Smith</h4>
+                    <p>Co-Founder & CTO</p>
+                </div>
+                <div class="team-member">
+                    <img src="chetna.jpg" alt="Marketing Head">
+                    <h4>Aman Verma</h4>
+                    <p>Marketing Head</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-wrapper">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> Email: contact@empowerx.com</p>
+                <p><i class="fas fa-phone"></i> Phone: +1234567890</p>
+                <p><i class="fas fa-map-marker-alt"></i> Address: 123 EmpowerX Street, Tech City</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="chat-button" onclick="toggleChatbox()">💬</div>
+<div class="chat-container" id="chatContainer">
+    <div class="chat-box" id="chatBox">
+        <div class="message bot-message">Hello! How can I help you?</div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+    
+    <div id="google_translate_element">translate</div>
+
+    <script>
+        function openProfile(profileUrl) {
+            window.location.href = profileUrl;
+        }
+
+        function searchServices() {
+            let input = document.getElementById('service-search').value.toLowerCase();
+            let items = document.querySelectorAll('.service-item');
+            items.forEach(item => {
+                let text = item.textContent.toLowerCase();
+                item.style.display = text.includes(input) ? 'block' : 'none';
+            });
+        }
+        function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 60; 
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
+});
+window.onscroll = function() {
+    if (window.scrollY > 50) {
+        document.querySelector("header").style.padding = "10px 0";
+        document.querySelector("header").style.boxShadow = "0px 2px 6px rgba(0, 0, 0, 0.2)";
+    } else {
+        document.querySelector("header").style.padding = "15px 0";
+        document.querySelector("header").style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
+    }
+}
+
+
+const translations = {
+    en: {
+        home: "Home",
+        about: "About",
+        services: "Services",
+        gallery: "Gallery",
+        contact: "Contact",
+        heroTitle: "EmpowerX - Connecting Skills to Opportunities",
+        heroDesc: "Skills Speak Greater Than Degrees",
+        exploreBtn: "Explore Services",
+        servicesHeading: "Our Services",
+        aboutHeading: "About Us",
+        aboutText: "EmpowerX is dedicated to bridging the gap between skilled professionals and those in need of their services.",
+        contactHeading: "Contact Us",
+        contactEmail: "Email: contact@empowerx.com",
+        contactPhone: "Phone: +1234567890",
+        contactAddress: "Address: 123 EmpowerX Street, Tech City"
+    },
+    pa: {
+        home: "ਘਰ",
+        about: "ਬਾਰੇ",
+        services: "ਸੇਵਾਵਾਂ",
+        gallery: "ਗੈਲਰੀ",
+        contact: "ਸੰਪਰਕ",
+        heroTitle: "EmpowerX - ਹੁਨਰਾਂ ਨੂੰ ਮੌਕੇ ਨਾਲ ਜੋੜਨਾ",
+        heroDesc: "ਹੁਨਰ ਡਿਗਰੀਆਂ ਤੋਂ ਵਧੇਰੇ ਮਹੱਤਵਪੂਰਨ ਹਨ",
+        exploreBtn: "ਸੇਵਾਵਾਂ ਖੋਜੋ",
+        servicesHeading: "ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ",
+        aboutHeading: "ਸਾਡੇ ਬਾਰੇ",
+        aboutText: "EmpowerX ਕੁਸ਼ਲ ਵਿਅਕਤੀਆਂ ਅਤੇ ਉਨ੍ਹਾਂ ਦੀ ਸਹਾਇਤਾ ਲੈਣ ਵਾਲਿਆਂ ਦਰਮਿਆਨ ਪُل ਬਣਾਉਣ ਲਈ ਸਮਰਪਿਤ ਹੈ।",
+        contactHeading: "ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ",
+        contactEmail: "ਈਮੇਲ: contact@empowerx.com",
+        contactPhone: "ਫ਼ੋਨ: +1234567890",
+        contactAddress: "ਪਤਾ: 123 EmpowerX Street, Tech City"
+    },
+    hi: {
+        home: "होम",
+        about: "परिचय",
+        services: "सेवाएं",
+        gallery: "गैलरी",
+        contact: "संपर्क करें",
+        heroTitle: "EmpowerX - कौशल को अवसरों से जोड़ना",
+        heroDesc: "कौशल डिग्रियों से अधिक महत्वपूर्ण हैं",
+        exploreBtn: "सेवाएं खोजें",
+        servicesHeading: "हमारी सेवाएं",
+        aboutHeading: "हमारे बारे में",
+        aboutText: "EmpowerX कुशल पेशेवरों और सेवा लेने वालों के बीच पुल बनाने के लिए समर्पित है।",
+        contactHeading: "संपर्क करें",
+        contactEmail: "ईमेल: contact@empowerx.com",
+        contactPhone: "फ़ोन: +1234567890",
+        contactAddress: "पता: 123 EmpowerX स्ट्रीट, टेक सिटी"
+    }
+};
+
+function changeLanguage() {
+    let selectedLang = document.getElementById("language-select").value;
+
+    document.querySelector('.nav-links li:nth-child(1) a').innerText = translations[selectedLang].home;
+    document.querySelector('.nav-links li:nth-child(2) a').innerText = translations[selectedLang].about;
+    document.querySelector('.nav-links li:nth-child(3) a').innerText = translations[selectedLang].services;
+    document.querySelector('.nav-links li:nth-child(4) a').innerText = translations[selectedLang].gallery;
+    document.querySelector('.nav-links li:nth-child(5) a').innerText = translations[selectedLang].contact;
+
+    document.querySelector('#hero h2').innerText = translations[selectedLang].heroTitle;
+    document.querySelector('#hero p').innerText = translations[selectedLang].heroDesc;
+    document.querySelector('#hero .btn').innerText = translations[selectedLang].exploreBtn;
+
+    document.querySelector('#services h2').innerText = translations[selectedLang].servicesHeading;
+
+    document.querySelector('#about h2').innerText = translations[selectedLang].aboutHeading;
+    document.querySelector('#about p').innerText = translations[selectedLang].aboutText;
+
+    document.querySelector('#contact h2').innerText = translations[selectedLang].contactHeading;
+    document.querySelector('#contact p:nth-child(2)').innerText = translations[selectedLang].contactEmail;
+    document.querySelector('#contact p:nth-child(3)').innerText = translations[selectedLang].contactPhone;
+    document.querySelector('#contact p:nth-child(4)').innerText = translations[selectedLang].contactAddress;
+}
+  function loadGoogleTranslate() {
+    let script = document.createElement("script");
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    document.body.appendChild(script);
+}
+
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        { pageLanguage: 'en', includedLanguages: 'en,pa,hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+        'google_translate_element'
+    );
+}
+
+// Load Google Translate Script
+window.onload = loadGoogleTranslate;
+
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+}
+
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            alert(`Location found! Latitude: ${latitude}, Longitude: ${longitude}`);
+            window.location.href = 'services.html'; // Redirect to services page
+        }, error => {
+            alert("Error fetching location. Please enter manually.");
+        });
+    } else {
+        alert("Geolocation is not supported by your browser.");
+    }
+}
+
+function findNearbyServices(lat = null, lon = null) {
+    let locationInput = document.getElementById('manual-location').value;
+    if (!lat || !lon) {
+        if (!locationInput) {
+            alert("Please enter a location or enable GPS.");
+            return;
+        }
+        alert(`Finding services near: ${locationInput}`);
+        window.location.href = 'services.html'; // Redirect on manual entry
+    } else {
+        alert(`Finding services near: Latitude ${lat}, Longitude ${lon}`);
+    }
+}
+
+function toggleDropdown() {
+    var dropdown = document.getElementById("userDropdown");
+    dropdown.classList.toggle("active");
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest(".user-menu")) {
+            dropdown.classList.remove("active");
+        }
+    }, { once: true });
+}
+</script>
+</body>
+</html>

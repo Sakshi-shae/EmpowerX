@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Jobs - EmpowerX</title>
+    <style>
+        /* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #ffff;
+    padding: 15px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background: #f39c12;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    background: linear-gradient(to right, #002147, #002147);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Job Listings */
+.job-listing {
+    padding: 30px;
+    background-color: #fff;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.8s ease-in-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Job Boxes */
+.job {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar */
+.sidebar {
+    background: #222;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    margin: 10px 0;
+    background: #444;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li:hover {
+    background: #f39c12;
+    transform: scale(1.05);
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #f39c12;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #e67e22;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #222;
+    color: white;
+    margin-top: 30px;
+    font-size: 1rem;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EmpowerX - Electrician Jobs</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mechanic.html" class="active">Mechanic Jobs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <h2>Find the Best Electrician Jobs in India</h2>
+        <p>Explore top electrician job opportunities that match your skills.</p>
+    </section>
+    
+    <section class="job-listing">
+        <div class="job">
+            <h3> Residential Electrician</h3>
+            <p><strong>Location:</strong> Mumbai, India</p>
+            <p><strong>Salary:</strong> ₹25,000 - ₹40,000</p>
+            <p><strong>Skills Required:</strong> Experience in installing lights, fans, and home appliances</p>
+            <a href="#" class="btn">Apply Now</a>
+        </div>
+
+        <div class="job">
+            <h3>Commercial Electrician</h3>
+            <p><strong>Location:</strong> Bangalore, India</p>
+            <p><strong>Salary:</strong> ₹18,000 - ₹30,000</p>
+            <p><strong>Skills Required:</strong> Experience with office and industrial wiring  and ability to work with security systems and data cabling</p>
+            <a href="#" class="btn">Apply Now</a>
+        </div>
+
+        <div class="job">
+            <h3>Industrial Electrician</h3>
+            <p><strong>Location:</strong> Chennai, India</p>
+            <p><strong>Salary:</strong> ₹35,000 - ₹50,000</p>
+            <p><strong>Skills Required:</strong> Motor control and PLC (Programmable Logic Controller) knowledge</p>
+            <a href="#" class="btn">Apply Now</a>
+        </div>
+    </section>
+</body>
+</html>

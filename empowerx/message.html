@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerX Contact Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #002147; /* Dark Blue */
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Contact Information Section */
+        .contact-info {
+            max-width: 40%;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            color: #FFD700;
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 24px;
+            margin-right: 10px;
+            color: #FFD700;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Message Box Form */
+        .message-form {
+            background-color: #002147;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideInRight 1s ease-out forwards;
+        }
+
+        .message-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .message-form input, 
+        .message-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid white;
+            border-radius: 5px;
+            background: white;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .message-form input:focus, 
+        .message-form textarea:focus {
+            border-color: #FFD700;
+            box-shadow: 0px 0px 10px #FFD700;
+            outline: none;
+        }
+
+        .message-form textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .message-form button {
+            width: 100%;
+            background: #FFD700;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .message-form button:hover {
+            background: #e6c200;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> Email: contact@empowerx.com</p>
+            <p><i class="fas fa-phone"></i> Phone: +1234567890</p>
+            <p><i class="fas fa-map-marker-alt"></i> Address: 123 EmpowerX Street, Tech City</p>
+            
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Message Form -->
+        <div class="message-form">
+            <h2>Send Us a Message</h2>
+            <input type="text" placeholder="Your Name" id="name">
+            <input type="email" placeholder="Your Email" id="email">
+            <textarea placeholder="Your Message" id="message"></textarea>
+            <button onclick="sendMessage()">Send Message</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill out all fields!");
+                return;
+            }
+
+            let button = document.querySelector(".message-form button");
+            button.innerHTML = "Sending...";
+            button.style.background = "#c9a600";
+
+            setTimeout(() => {
+                alert("Message Sent! Thank you, " + name + "!");
+                button.innerHTML = "Send Message";
+                button.style.background = "#FFD700";
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("message").value = "";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

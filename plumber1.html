@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerX Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* General Styles */
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e4e2e2;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #b0adad;
+    color: black;
+    height: 206vh;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.logo {
+    font-size: 20px;
+    color: white;
+}
+
+.logo img {
+    width: 10%;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    width: 170px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    background: #454444;
+    border-radius: 5px;
+}
+
+.menu li a:hover{
+    background-color: rgb(229, 152, 10);
+    color: black;
+    border: 2px solid black;
+}
+
+.menu .settings a {
+    border-radius: 25px;
+    background: #002147;
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+/* General Settings Menu Styling */
+.settings {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+}
+
+.settings a {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    background: #4A4A4A;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.settings a:hover {
+    background-color: rgb(229, 152, 10);
+    transform: scale(1.05);
+}
+
+.settings i {
+    margin-right: 8px;
+}
+
+/* Submenu (Dropdown) Styling */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 10;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.submenu li {
+    list-style: none;
+}
+
+.submenu a {
+    color: #333;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submenu a i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.submenu a:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.05);
+}
+
+/* Show dropdown when active */
+.settings:hover .submenu,
+.submenu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffff;
+    padding: 15px 20px;
+    color: black;
+}
+
+/* Logo Section */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span{
+    color: black;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* Search Bar */
+.search-bar {
+    flex: 1;
+    margin: 0 20px;
+    max-width: 400px;
+    position: relative;
+
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    text-indent: 10px;
+}
+
+/* Notifications */
+.notifications {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn {
+    background-color: #002147;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+/* Hover effect */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on button click */
+.notifications:hover .dropdown-content {
+    display: block;
+
+}
+
+/* Hover effect */
+.dropdown-content a:hover {
+    background-color: rgb(229, 152, 10);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+
+}
+
+
+/* Welcome Section */
+.welcome {
+    text-align: center;
+    background: #002147;
+    color: white;
+    padding: 30px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animated Text */
+.welcome h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+/* Slide-in Animation for Text */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulsating Effect for Text */
+.welcome p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    animation: pulseText 2s infinite ease-in-out;
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 0.8; }
+}
+
+/* Glow Effect for Links */
+.welcome p a {
+    color: #ffd700; /* Gold color */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.welcome p a:hover {
+    color: rgb(229, 152, 10);
+    text-shadow: 0px 0px 10px rgb(255, 204, 0);
+}
+
+/* Background Animation */
+.welcome::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    animation: backgroundGlow 4s infinite linear;
+}
+
+@keyframes backgroundGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Section Titles */
+.section-title {
+    background-color: #002147;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 20px auto;
+    display: block;
+    width: 200px;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.section-title:hover {
+    cursor: pointer;
+    border: 3px solid rgb(229, 152, 10);
+}
+
+/* Skills Section */
+.skills-section {
+    background: #ffff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animation on Section Load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Skill Box Animation */
+.skill-box {
+    background: #002147;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover Effect for Skill Box */
+.skill-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Skill Title Animation */
+.skill-title {
+    background: white;
+    color: #002147;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover Effect for Skill Title */
+.skill-title:hover {
+    background: #f4a261;
+    color: white;
+    cursor: pointer;
+}
+
+/* Checkbox Animation */
+.skill-box label {
+    display: block;
+    text-align: left;
+    margin: 5px 0;
+    font-size: 14px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Checkbox Hover Effect */
+.skill-box label:hover {
+    transform: translateX(5px);
+    color: #f4a261;
+}
+
+
+/* Services Section */
+.services-section {
+    background: #ffffff;
+    padding: 30px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Fade-in Animation for Section */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Service Item with Animation */
+.service-item {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 1s ease-in-out forwards;
+    opacity: 0;
+    
+}
+
+/* Slide-up Animation for Items */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects */
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Glow Effect on Hover */
+.service-item::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.service-item:hover::before {
+    opacity: 1;
+}
+
+/* Image Animation */
+.service-item img {
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Image Zoom Effect on Hover */
+.service-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Text Styling */
+.service-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    transition: color 0.3s ease-in-out;
+}
+
+.service-item:hover h3 {
+    color: #f39c12;
+}
+
+/* Paragraph Animation */
+.service-item p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-item:hover p {
+    transform: translateY(3px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .service-item {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* Modal Styles */
+.modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .close-btn {
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        /* Book Service Button */
+.book-btn {
+    background: #28a745; /* Green color for booking */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.book-btn:hover {
+    background: #218838; /* Darker green on hover */
+}
+
+/* Close Button */
+.close-btn {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+.chat-section {
+        width: 300px;
+        border: 2px solid navy;
+        border-radius: 10px;
+        background-color: offwhite;
+        padding: 10px;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        display: none;
+    }
+    .chat-box {
+        height: 200px;
+        overflow-y: auto;
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid navy;
+    }
+    input#chatInput {
+        width: 80%;
+        padding: 5px;
+        border: 1px solid navy;
+        border-radius: 5px;
+    }
+    button {
+        background-color: navy;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #001f3f;
+    }
+    .video-call {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .video-call a {
+        background-color: #002147;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .video-call a:hover {
+        background-color: #ecd847;
+    }
+    /* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .profile img {
+        width: 140px;
+    }
+    
+    .menu li {
+        padding: 8px;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .search-bar {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Sidebar Responsive */
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        width: 250px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .search-bar {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Responsive Service Section */
+    .services-container, 
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-item, 
+    .skill-box {
+        width: 90%;
+    }
+
+    /* Adjust Welcome Section */
+    .welcome h1 {
+        font-size: 1.5rem;
+    }
+
+    .welcome p {
+        font-size: 1rem;
+    }
+
+    /* Adjust Chat Section */
+    .chat-section {
+        width: 90%;
+        right: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust Sidebar for Mobile */
+    .sidebar {
+        width: 100%;
+        left: -100%;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .profile img {
+        width: 120px;
+    }
+
+    /* Adjust Navbar */
+    .navbar {
+        flex-direction: column;
+    }
+
+    /* Buttons and Text */
+    .book-btn, .close-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    /* Chat Section */
+    .chat-section {
+        width: 100%;
+        right: 0;
+    }
+}
+#reviewButton{
+           text-decoration: none;
+           color: white;
+           display: block;
+           padding: 10px;
+           background-color: #454444;
+           border-radius: 5px;
+           height: 43px;
+           width: 230px;
+           margin-left: 10px;
+           font-size: 1.1rem;
+           text-align: left;
+           margin-bottom: 10px;
+           
+}
+#reviewButton:hover{
+    background-color: rgb(229, 152, 10);
+    color: black;
+    border: 2px solid black;
+}
+.review-form {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 300px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .star-rating {
+            direction: rtl;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 30px;
+            cursor: pointer;
+            color: gray;
+        }
+
+        .star-rating input:checked ~ label {
+            color: gold;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #002147;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0d488b;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile">
+            <img src="https://th.bing.com/th/id/OIP.8r8EHfoGDfKNO9Bv5YKkwwHaEM?w=280&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7https://th.bing.com/th/id/OIP.8r8EHfoGDfKNO9Bv5YKkwwHaEM?w=280&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+            <h3>Mohan (Plumber)</h3>
+        </div>
+        <ul class="menu">
+            <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a href="jobPlumber.html"><i class="fa-solid fa-magnifying-glass"></i> My Jobs</a></li>
+            <li><a href="#service"><i class="fa-brands fa-slack"></i> My Services</a></li>
+            <li><a href="resourcePlumber.html"><i class="fa-solid fa-atom"></i> Resources</a></li><br><br><br>
+            <button id="reviewButton"><i class="fa-solid fa-star"></i>Write a Review</button>
+
+            <!-- Review Form -->
+            <div class="review-form" id="reviewForm">
+                <h3>Rate Your Experience</h3>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                </div>
+                <textarea id="reviewText" placeholder="Write your review here..." rows="4" cols="30"></textarea><br>
+                <button onclick="submitReview()">Submit Review</button>
+            </div>
+            <li class="message"><a href="#"><i class="fa-solid fa-comment-dots"></i> Message</a></li>
+            <li class="settings"><a href="#"><i class="fa-solid fa-cogs"></i> Settings</a> 
+        </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="handshake.png" alt="Logo">
+                <span>EMPOWERX</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Jobs, Resources...">
+            </div>
+            <div class="notifications">
+                <button class="dropbtn" aria-label="Notifications" aria-expanded="false">
+                    <i class="fa-solid fa-bell"></i> Notifications ▼
+                </button>
+                <div class="dropdown-content">
+                    <a href="#"> New job available</a>
+                    <a href="#"> Service update</a>
+                    <a href="#"> Resources update</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Welcome Section -->
+        <section class="welcome">
+            <h1>WELCOME TO EMPOWERX</h1>
+            <p>
+                <a href="index.html">At EmpowerX</a>, we believe that skills are the true measure of potential.
+                Our mission is to connect skilled individuals—those who may not have formal educational
+                qualifications—with opportunities for growth, learning, and career development.
+            </p>
+        </section>
+
+        <hr>
+        <div class="video-call">
+            <a href="#" onclick="startVideoCall()">Start Video Call</a>
+        </div>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <button class="section-title">SKILLS</button>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <button class="skill-title"> Residential Plumber</button>
+                    <label><input type="checkbox"> Beginner</label>
+                    <label><input type="checkbox"> Intermediate</label>
+                    <label><input type="checkbox"> Advance</label>
+                </div>
+                <div class="skill-box">
+                    <button class="skill-title">Commercial Plumber</button>
+                    <label><input type="checkbox"> Beginner</label>
+                    <label><input type="checkbox"> Intermediate</label>
+                    <label><input type="checkbox"> Advance</label>
+                </div>
+                <div class="skill-box">
+                    <button class="skill-title">Service & Repair Plumber</button>
+                    <label><input type="checkbox"> Beginner</label>
+                    <label><input type="checkbox" checked> Intermediate</label>
+                    <label><input type="checkbox"> Advance</label>
+                </div>
+            </div>
+        </section>
+
+         <!-- Service Notification (Added this missing element) -->
+<div id="serviceNotification" style="display: none; background: yellow; padding: 10px; position: fixed; top: 10px; right: 10px; border-radius: 5px;"></div>
+
+        <!-- Services Section -->
+       
+<section class="services-section" id="service">
+    <button class="section-title">SERVICES</button>
+    <div class="services-container">
+        <div class="service-item" onclick="showServiceDetails('General Plumbing', 'Work in homes, apartments.', '₹50/hour')">
+            <img src="https://th.bing.com/th/id/OIP.va2AKGscXlJwK3qMJ5N2-gHaEK?w=282&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service 1">
+            <h3>General Plumbing</h3>
+            <p>Expert solutions for pipes, faucets, sinks, toilets, water heaters, and drainage systems.</p>
+        </div>
+        <div class="service-item" onclick="showServiceDetails('Commercial Installations', 'Work in homes, apartments.', '₹50/hour')">
+            <img src="https://th.bing.com/th/id/OIP.CXE88XrYLO5gnpGhik5q9QHaE7?w=298&h=199&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service 2">
+            <h3>Commercial Installations</h3>
+            <p>Installation and maintenance of large-scale plumbing systems, boilers, and water supply lines.</p>
+        </div>
+        <div class="service-item" onclick="showServiceDetails('Repair & Maintenance', 'Work in homes, apartments.', '₹50/hour')">
+            <img src="https://th.bing.com/th/id/OIP.7x59o1y9pIBhEzUqr2_5cwHaFQ?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service 3">
+            <h3>Repair & Maintenance</h3>
+            <p>Quick fixes for water heaters, dishwashers, garbage disposals, sump pumps, and leaks.</p>
+        </div>
+        <div class="service-item" onclick="showServiceDetails('Water Filtration System', 'Work in homes, apartments.', '₹50/hour')">
+            <img src="https://th.bing.com/th/id/OIP.QZ-oUog_JUKE8YLRKdqoCQHaDr?w=339&h=174&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service 4">
+            <h3>Water Filtration Systems</h3>
+            <p>Expert solutions for clean water supply, filtration, and purification in homes and businesses.</p>
+        </div>
+    </div>
+</section>
+
+
+    </div>
+
+   <!-- Modal -->
+<div class="modal" id="serviceModal">
+    <div class="modal-content">
+        <h2 id="serviceTitle"></h2>
+        <p id="serviceDescription"></p>
+        <h3 id="servicePrice"></h3>
+        <button class="book-btn" onclick="bookService()">Book Service</button>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            // Toggle review form visibility
+            document.getElementById("reviewButton").onclick = function () {
+                var reviewForm = document.getElementById("reviewForm");
+                reviewForm.style.display = (reviewForm.style.display === "none" || reviewForm.style.display === "") ? "block" : "none";
+            };
+        });
+
+        function submitReview() {
+            var rating = document.querySelector('input[name="rating"]:checked');
+            var reviewText = document.getElementById("reviewText").value.trim();
+
+            if (rating && reviewText) {
+                alert("Thank you for your review!\nRating: " + rating.value + "\nReview: " + reviewText);
+                // Optionally: Send review data to a server using fetch or AJAX
+                document.getElementById("reviewForm").style.display = "none"; // Hide form after submission
+            } else {
+                alert("Please provide both a rating and a review.");
+            }
+        }
+    function showServiceDetails(title, description, price) {
+        document.getElementById("serviceTitle").innerText = title;
+        document.getElementById("serviceDescription").innerText = description;
+        document.getElementById("servicePrice").innerText = "Charge: " + price;
+        document.getElementById("serviceModal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("serviceModal").style.display = "none";
+    }
+
+    function bookService() {
+        let serviceName = document.getElementById("serviceTitle").innerText;
+        alert("Thank you for booking the '" + serviceName + "' service! Our representative will contact you soon.");
+        closeModal();
+        showServiceNotification(serviceName);
+        addServiceUpdate(serviceName);
+    }
+
+    function showServiceNotification(serviceName) {
+        let notificationBox = document.getElementById("serviceNotification");
+        notificationBox.innerHTML = `<p>New update: Your service '${serviceName}' is now in process.</p>`;
+        notificationBox.style.display = "block";
+        setTimeout(() => { notificationBox.style.display = "none"; }, 5000);
+    }
+
+    function addServiceUpdate(serviceName) {
+        let dropdown = document.querySelector(".dropdown-content");
+        if (dropdown) {  // Check if the dropdown exists
+            let newUpdate = document.createElement("a");
+            newUpdate.href = "#";
+            newUpdate.innerText = `Service Update: '${serviceName}' is in progress`;
+            dropdown.appendChild(newUpdate);
+        } else {
+            console.warn("Dropdown content not found. Skipping update.");
+        }
+    }
+
+    function sendMessage() {
+        let input = document.getElementById('chatInput').value;
+        if (input.trim() !== "") {
+            let chatBox = document.getElementById('chatBox');
+            let newMessage = document.createElement('p');
+            newMessage.textContent = "You: " + input;
+            chatBox.appendChild(newMessage);
+            document.getElementById('chatInput').value = "";
+        }
+    }
+
+    function startVideoCall() {
+        window.open('https://meet.google.com/new', '_blank');
+    }
+    document.getElementById("settingsMenu").addEventListener("click", function(event) {
+            event.stopPropagation(); 
+            let submenu = document.getElementById("submenu");
+            submenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function(event) {
+            let submenu = document.getElementById("submenu");
+            if (!document.getElementById("settingsMenu").contains(event.target)) {
+                submenu.classList.remove("show");
+            }
+        });
+
+        function handleUpdate() {
+            alert("Update Clicked! You can redirect this to an update page.");
+        }
+
+        function handleLogout() {
+            alert("Logout Clicked! Redirecting to logout...");
+            // window.location.href = "logout.html";  // Uncomment for actual redirection
+        }
+       
+    </script>
+    
+    
+    
+</body>
+</html>
+

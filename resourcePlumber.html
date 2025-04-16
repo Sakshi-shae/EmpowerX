@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - EmpowerX</title>
+   <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+header {
+    background: #002147;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.resource-search {
+    text-align: center;
+    margin: 20px;
+    animation: slideDown 0.8s ease-in-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.resource-search input {
+    padding: 12px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.resource-search input:focus {
+    outline: none;
+    border-color: #002147;
+    box-shadow: 0 2px 8px rgba(0, 115, 230, 0.3);
+}
+
+.resource-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.resource-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.resource-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.resource-item h2 {
+    color: #333;
+    font-size: 18px;
+}
+
+.resource-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+.resource-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #002147;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.resource-item a:hover {
+    background: #f39c12;
+    transform: translateY(-3px);
+}
+
+   </style>
+</head>
+<body>
+    <header>
+        <h1>Resources</h1>
+        <p>Find helpful guides, tools, and templates to empower your journey.</p>
+    </header>
+    
+    <section class="resource-search">
+        <input type="text" id="search" placeholder="Search resources...">
+    </section>
+    
+    <section class="resource-list">
+        <div class="resource-item">
+            <h2>Entrepreneurship Guide</h2>
+            <p>A step-by-step guide to launching your startup with confidence.</p>
+            <a href="https://www.getjobber.com/academy/plumbing/how-to-start-plumbing-business/">Read More</a>
+        </div>
+        <div class="resource-item">
+            <h2>Funding & Grants</h2>
+            <p>A curated list of funding opportunities and grants for startups.</p>
+            <a href="https://ncspm.co.uk/grants-funding/">View List</a>
+        </div>
+        <div class="resource-item">
+            <h2>Networking Strategies</h2>
+            <p>Proven techniques to build a strong professional network.</p>
+            <a href="https://www.housecallpro.com/resources/marketing/plumber-networking/">Learn More</a>
+        </div>
+        <div class="resource-item">
+            <h2>Business Plan Template</h2>
+            <p>A customizable business plan template for your venture.</p>
+            <a href="https://upmetrics.co/template/plumbing-business-plan">Download</a>
+        </div>
+        <div class="resource-item">
+            <h2>Marketing & Branding</h2>
+            <p>Essential marketing strategies to grow your business.</p>
+            <a href="https://www.getjobber.com/academy/plumbing/marketing-strategies-for-plumbers/">Explore</a>
+        </div>
+        <div class="resource-item">
+            <h2>Automotive Repair Guide</h2>
+            <p>Comprehensive guide on diagnosing and fixing common vehicle issues.</p>
+            <a href="https://www.scribd.com/document/615664564/Plumbing-Maintenance-and-Repair">Read More</a>
+        </div>
+        <div class="resource-item">
+            <h2>Mechanic Certification Programs</h2>
+            <p>List of top certification programs to become a professional mechanic.</p>
+            <a href="https://courses.iid.org.in/course/electrician-course">View List</a>
+        </div>
+        <div class="resource-item">
+            <h2>Tool Maintenance Tips</h2>
+            <p>Learn how to properly maintain and extend the life of your tools.</p>
+            <a href="https://www.getservicebox.com/post/how-to-care-for-plumbing-tools">Learn More</a>
+        </div>
+        <div class="resource-item">
+            <h2>Automotive Business Startup</h2>
+            <p>A complete guide to starting your own auto repair business.</p>
+            <a href="https://www.getjobber.com/academy/plumbing/how-to-start-plumbing-business/">Download</a>
+        </div>
+    </section>
+</body>
+</html>

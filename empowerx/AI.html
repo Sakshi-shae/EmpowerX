@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        } .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            font-size: 30px;
+        }
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+        .chat-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .chat-container.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .chat-box {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+        .message {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            max-width: 80%;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .user-message {
+            background-color: #002147;
+            color: white;
+            align-self: flex-end;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #e0e0e0;
+            align-self: flex-start;
+        }
+        .typing-indicator {
+            font-size: 12px;
+            color: gray;
+            padding: 5px;
+        }
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background: white;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #002147;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-button" onclick="toggleChatbox()">💬</div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-box" id="chatBox">
+            <div class="message bot-message">Hello! How can I help you?</div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        function toggleChatbox() {
+            let chatContainer = document.getElementById("chatContainer");
+            chatContainer.classList.toggle("show");
+        }
+
+        function sendMessage() {
+            let userInput = document.getElementById("userInput").value;
+            if (userInput.trim() === "") return;
+
+            let chatBox = document.getElementById("chatBox");
+
+            let userMessage = document.createElement("div");
+            userMessage.className = "message user-message";
+            userMessage.innerText = userInput;
+            chatBox.appendChild(userMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            document.getElementById("userInput").value = "";
+
+            let typingIndicator = document.createElement("div");
+            typingIndicator.className = "typing-indicator";
+            typingIndicator.innerText = "Bot is typing...";
+            chatBox.appendChild(typingIndicator);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                chatBox.removeChild(typingIndicator);
+                let botMessage = document.createElement("div");
+                botMessage.className = "message bot-message";
+                botMessage.innerText = getBotResponse(userInput);
+                chatBox.appendChild(botMessage);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+            if (input.includes("hello") || input.includes("hi")) {
+                return "Hi there! How can I assist you today?";
+            } else if (input.includes("how are you")) {
+                return "I'm just a bot, but I'm doing great! What about you?";
+            } else if (input.includes("your name")) {
+                return "I'm ChatBot, your virtual assistant!";
+            } else if (input.includes("bye")) {
+                return "Goodbye! Have a great day!";
+            } else {
+                return "I'm not sure how to respond to that. Can you ask me something else?";
+            }
+        }
+    </script>
+</body>
+</html>
